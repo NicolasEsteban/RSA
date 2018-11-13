@@ -25,7 +25,7 @@ public class Rsa {
         System.out.print("Introduzca el rango : ");
         numero_digitos = sc.nextInt();
         
-        BigInteger p,q,I;
+        BigInteger p,q,I, N, F, p1, q1;
         
         Funciones rango = new Funciones();
         
@@ -38,6 +38,14 @@ public class Rsa {
         
         q = BigInteger.probablePrime(I.bitLength(), rnd);
         System.out.println("q: "+q);
+        N=p.multiply(q); // N= p*q
+        
+        System.out.println("N= "+N);
+        p1=p.subtract(new BigInteger("1"));
+        q1=q.subtract(new BigInteger("1"));
+        F=p1.multiply(q1); // F= (p-1)*(q-1)
+        
+        System.out.println("F="+F);
     }
     
 }
