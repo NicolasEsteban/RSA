@@ -5,6 +5,7 @@
  */
 package modelos;
 import java.math.BigInteger;
+import java.util.Random;
 
 
 public class Funciones {
@@ -50,41 +51,61 @@ public class Funciones {
                 x++;
             }
         }
-        
+        k=k-1;
         BigInteger b [] = new BigInteger[k]; // arreglo b para almacenar la secuencia 
         // se examina la secuencia para determinar para saber si el numero es probablemente primo o no
         for(j=0;j<k;j++){
             b[j]=base.modPow(base.pow(j).multiply(m), n);
-            System.out.println(b[j]);
+            if(b[j].compareTo(n.subtract(new BigInteger("1")))==0){
+                b[j]= new BigInteger("-1");
+            }
+            
         }
         int verificador=1;
-        if(b[0].compareTo(new BigInteger("1"))==0){
-            System.out.println("Probablemente Primo");
-            return 1;
-        }else{
         
-            if(b[k-1].compareTo(new BigInteger("1"))==0){
-                for(j=k-2;j>=0;j--){
-                    if(b[j].compareTo(new BigInteger("1"))==0){
-                        verificador=0;
-                    }
-                }
-                if(verificador==0){
-                    System.out.println("Numero Compuesto");
-                    return 0;
+        if(b[0].compareTo(new BigInteger("1"))==0  || b[0].compareTo(new BigInteger("-1"))==0 ){
+                //System.out.println("Probablemente primo ");
+                return 0;
+                
+        }else if(b[k-1].compareTo(new BigInteger("-1"))==0){
+            //System.out.println("Probablemente primo");
+            return 0;
+        }else{
+            //System.out.println("holaa");
+            for(i=1;i<k-1;i++){
+                if(b[0].compareTo(new BigInteger("1"))==0  || b[0].compareTo(new BigInteger("-1"))==0 ){
+                    verificador=0;
                 }else{
-                    System.out.println("Probablemente Primo");
-                    return 1;
+                    verificador=1;
                 }
+            }
+            
+            if(verificador==0){
+                //System.out.println("Probablemente primo ");
+                return 0;
             }else{
-               System.out.println("Numero Compuesto");
-               return 1;
+                //System.out.println("Numero Compuesto");
+                return 1;
             }
         }
         
         
     }
     
+    
+    public BigInteger buscar_primo(BigInteger n, BigInteger I){ //genera el numero primo 
+        Random rnd = new Random();                              // y cundo realmente lo es el ciclo se rompe
+        
+        int ver= Primalidad(n);
+        while (ver==1){
+            n = BigInteger.probablePrime(I.bitLength(), rnd);
+            ver= Primalidad(n);
+            if(ver==0){
+                break;
+            }
+        }
+        return n;
+    }
 }
 
 
