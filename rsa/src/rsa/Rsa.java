@@ -32,25 +32,25 @@ public class Rsa {
         I = funcion.generar_rango(numero_digitos);
         
         Random rnd = new Random();
-        System.out.println("Claves privadas");
+        
         p = BigInteger.probablePrime(I.bitLength(), rnd);
         p=funcion.buscar_primo(p, I);
         
         q = BigInteger.probablePrime(I.bitLength(), rnd);
         q=funcion.buscar_primo(q, I);
         
-        System.out.println("p "+p);
-        System.out.println("q "+q);
+        System.out.println("p = "+p);
+        System.out.println("q = "+q);
         
         
         N=p.multiply(q); // N= p*q
         
-        System.out.println("N= "+N);
+        System.out.println("N = "+N);
         p1=p.subtract(new BigInteger("1"));
         q1=q.subtract(new BigInteger("1"));
         F=p1.multiply(q1); // F= (p-1)*(q-1)
         
-        System.out.println("F="+F);
+        System.out.println("F = "+F);
         
     }
     
