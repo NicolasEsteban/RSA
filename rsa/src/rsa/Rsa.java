@@ -1,23 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package rsa;
 
 import java.util.Scanner;
 import java.math.BigInteger;
 import java.util.Random;
 import modelos.Funciones;
-/**
- *
- * @author Nicolas
- */
+
 public class Rsa {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
         
         int numero_digitos;
@@ -51,6 +42,19 @@ public class Rsa {
         F=p1.multiply(q1); // F= (p-1)*(q-1)
         
         System.out.println("F = "+F);
+        
+        BigInteger e,d;
+        e=funcion.generar_e(N, new BigInteger("1"));
+        
+        while(e.gcd(F).compareTo(new BigInteger("1"))!=0){
+            e=funcion.generar_e(N, new BigInteger("1"));
+        }
+        //System.out.println("gcd: "+e.gcd(N));
+        System.out.println("e = "+e);// se imprime e
+        
+        d=e.modPow(new BigInteger("-1"), F);
+        
+        System.out.println("d = "+d);
         
     }
     

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelos;
 import java.math.BigInteger;
 import java.util.Random;
@@ -105,6 +101,24 @@ public class Funciones {
             }
         }
         return n;
+    }
+    
+    public BigInteger generar_e(BigInteger bigInteger,BigInteger min){// calcula un numero aleatoriamente
+                                                                      // entre los dos big integer que se ingresan  
+        BigInteger bigInteger1 = bigInteger.subtract (min);
+        Random rnd = new Random ();
+        int maxNumBitLength = bigInteger.bitLength ();
+
+        BigInteger aRandomBigInt;
+
+        aRandomBigInt = new BigInteger (maxNumBitLength, rnd);
+        if (aRandomBigInt.compareTo (min) <0)
+          aRandomBigInt = aRandomBigInt.add (min);
+        if (aRandomBigInt.compareTo(bigInteger) >= 0)
+          aRandomBigInt = aRandomBigInt.mod(bigInteger1).add(min);
+    
+        
+        return aRandomBigInt;
     }
 }
 
