@@ -56,9 +56,9 @@ public class Rsa {
         
         System.out.println("d = "+d);
         
-        BigInteger M = BigInteger.valueOf(1);
-        BigInteger X = BigInteger.valueOf(1);
-        BigInteger Y = BigInteger.valueOf(1);
+        BigInteger M ;
+        BigInteger X ;
+        BigInteger Y ;
         Scanner sc2 = new Scanner(System.in);
         System.out.println("Ingrese el mensaje:");
         M=sc2.nextBigInteger();
