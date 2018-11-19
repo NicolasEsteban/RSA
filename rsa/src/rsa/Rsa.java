@@ -63,9 +63,9 @@ public class Rsa {
         System.out.println("Ingrese el mensaje:");
         M=sc2.nextBigInteger();
         System.out.println("M="+M);
-        X=M.modPow(e, F);
+        X=M.modPow(e, N);
         System.out.println("X="+X);
-        Y=X.modPow(d, F);
+        Y=X.modPow(d, N);
         System.out.println("Y="+Y);
 
     }
