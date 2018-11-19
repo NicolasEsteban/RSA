@@ -56,6 +56,17 @@ public class Rsa {
         
         System.out.println("d = "+d);
         
+        BigInteger M = BigInteger.valueOf(1);
+        BigInteger X = BigInteger.valueOf(1);
+        BigInteger Y = BigInteger.valueOf(1);
+        Scanner sc2 = new Scanner(System.in);
+        System.out.println("Ingrese el mensaje:");
+        M=sc2.nextBigInteger();
+        System.out.println("M="+M);
+        X=M.modPow(e, F);
+        System.out.println("X="+X);
+        
+
     }
     
 }
