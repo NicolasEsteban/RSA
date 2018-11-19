@@ -65,7 +65,8 @@ public class Rsa {
         System.out.println("M="+M);
         X=M.modPow(e, F);
         System.out.println("X="+X);
-        
+        Y=X.modPow(d, F);
+        System.out.println("Y="+Y);
 
     }
     
