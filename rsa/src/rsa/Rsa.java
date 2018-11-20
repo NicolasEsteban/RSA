@@ -12,9 +12,10 @@ public class Rsa {
     public static void main(String[] args) {
         
         int numero_digitos;
-        Scanner sc = new Scanner(System.in);
+do{        Scanner sc = new Scanner(System.in);
         System.out.print("Introduzca el rango : ");
         numero_digitos = sc.nextInt();
+}while(numero_digitos<100 || numero_digitos>300);
         
         BigInteger p,q,I, N, F, p1, q1;
         
