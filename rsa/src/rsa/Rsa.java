@@ -15,9 +15,18 @@ public class Rsa {
 do{        Scanner sc = new Scanner(System.in);
         System.out.print("Introduzca el rango : ");
         numero_digitos = sc.nextInt();
-}while(numero_digitos<100 || numero_digitos>300);
+}while(numero_digitos<100 || numero_digitos>300);//ciclo do-while que restringe que los números ingresados sean entre [100, 300]
         
-        BigInteger p,q,I, N, F, p1, q1;
+        BigInteger p,q,I, N, F, p1, q1; /*declaracion de los enteros grandes: 
+                                         p es el primer primo
+                                         q es el segundo primo
+                                         I es la variable para que genere el rango y que se le pasa a la función genera rango
+                                         N es p multiplicado por q
+                                         F es (p-1) multiplicado por (q-1)
+                                         p1 es p-1
+                                         q1 es q-1
+        
+        */
         
         Funciones funcion = new Funciones();
         
@@ -50,7 +59,7 @@ do{        Scanner sc = new Scanner(System.in);
         while(e.gcd(F).compareTo(new BigInteger("1"))!=0){
             e=funcion.generar_e(N, new BigInteger("1"));
         }
-        //System.out.println("gcd: "+e.gcd(N));
+      
         System.out.println("e = "+e);// se imprime e
         
         d=e.modPow(new BigInteger("-1"), F);
